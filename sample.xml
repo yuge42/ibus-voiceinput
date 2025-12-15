@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component>
   <name>org.freedesktop.IBus.Sample</name>
-  <description>Minimal IBus Sample Engine</description>
+
+  <description>音声入力用 IBus サンプルエンジン</description>
+
   <exec>/usr/libexec/ibus-engine-sample</exec>
   <version>0.1</version>
-  <author>Your Name</author>
+
+  <author>あなたの名前</author>
+  <license>MIT</license>
 
   <engines>
     <engine>
       <name>sample</name>
-      <longname>Sample IBus Engine</longname>
-      <language>en</language>
-      <license>MIT</license>
+      <longname>音声入力（Whisper）</longname>
+      <description>Ctrl+Space で音声入力を開始／終了します</description>
+      <language>ja</language>
       <icon></icon>
       <layout>default</layout>
     </engine>
