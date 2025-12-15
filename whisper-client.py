@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import socket
+import time
 
 SOCK_PATH = "/tmp/whisper.sock"
 
@@ -8,35 +9,43 @@ def send(cmd):
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     sock.connect(SOCK_PATH)
     sock.sendall(cmd.encode())
-    data = sock.recv(4096)
+    data = sock.recv(4096).decode()
     sock.close()
-    return data.decode()
+    return data
 
 def main():
-    while True:
-        print()
-        print("1: start recording")
-        print("2: stop (commit)")
-        print("3: abort (cancel)")
-        print("q: quit")
+    print("1: start")
+    print("2: stop (commit)")
+    print("3: abort")
+    print("4: get result")
+    print("q: quit")
 
+    while True:
         choice = input("> ").strip()
 
         if choice == "1":
             print(send("start"))
 
         elif choice == "2":
-            print("➡", send("stop"))
+            print(send("stop"))
 
         elif choice == "3":
             print(send("abort"))
 
+        elif choice == "4":
+            result = send("get")
+            if result != "(none)":
+                print("➡", result)
+            else:
+                print("(no result yet)")
+
         elif choice.lower() == "q":
-            print("bye")
             break
 
         else:
-            print("unknown choice")
+            print("unknown")
+
+        time.sleep(0.1)
 
 if __name__ == "__main__":
     main()
