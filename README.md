@@ -86,7 +86,7 @@ To activate the sample engine:
 ibus engine sample
 ```
 
-The engine will intercept keyboard input. Pressing the Return key will output "HELLO" instead of a newline.
+The engine will intercept all keyboard input. Only pressing the Return key will produce output: the text "HELLO". All other keys will be suppressed.
 
 Check the log file for debugging:
 
