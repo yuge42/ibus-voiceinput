@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component>
+  <name>org.freedesktop.IBus.Sample</name>
+  <description>Minimal IBus Sample Engine</description>
+  <exec>/usr/libexec/ibus-engine-sample</exec>
+  <version>0.1</version>
+  <author>Your Name</author>
+
+  <engines>
+    <engine>
+      <name>sample</name>
+      <longname>Sample IBus Engine</longname>
+      <language>en</language>
+      <license>MIT</license>
+      <icon></icon>
+      <layout>default</layout>
+    </engine>
+  </engines>
+</component>
