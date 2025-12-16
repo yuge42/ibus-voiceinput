@@ -87,28 +87,33 @@ The voice input daemon (`ibus-voiceinputd`) provides Whisper-based voice recogni
 #### Install Python Dependencies
 
 ```bash
-# Install system-wide (recommended for systemd service)
-sudo pip3 install -r requirements.txt
-
-# Or install in a virtual environment and update ExecStart in the service file
+# Create and activate virtual environment
+python3 -m venv ~/.local/share/ibus-voiceinputd-venv
+source ~/.local/share/ibus-voiceinputd-venv/bin/activate
+pip install -r requirements.txt
+deactivate
 ```
 
 #### Install the Daemon Binary
 
 ```bash
-sudo install -m 755 \
+install -m 755 \
   ibus-voiceinputd.py \
-  /usr/local/bin/ibus-voiceinputd
+  ~/.local/bin/ibus-voiceinputd
 ```
+
+Make sure `~/.local/bin` is in your PATH (most distributions include this by default).
 
 #### Install the systemd Service
 
 ```bash
 # Install for current user
 mkdir -p ~/.config/systemd/user
-install -m 644 \
-  ibus-voiceinputd.service \
-  ~/.config/systemd/user/
+mkdir -p ~/.local/bin
+
+# Create service file from template using your venv path
+export VENV_PYTHON="$HOME/.local/share/ibus-voiceinputd-venv/bin/python"
+envsubst < ibus-voiceinputd.service.in > ~/.config/systemd/user/ibus-voiceinputd.service
 
 # Reload systemd configuration
 systemctl --user daemon-reload
