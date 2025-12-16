@@ -111,8 +111,7 @@ Make sure `~/.local/bin` is in your PATH (most distributions include this by def
 mkdir -p ~/.config/systemd/user
 mkdir -p ~/.local/bin
 
-# Create service file from template using your venv path
-export VENV_PYTHON="$HOME/.local/share/ibus-voiceinputd-venv/bin/python"
+# Create service file from template
 envsubst < ibus-voiceinputd.service.in > ~/.config/systemd/user/ibus-voiceinputd.service
 
 # Reload systemd configuration
