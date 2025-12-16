@@ -149,13 +149,13 @@ When recording, you'll see 🎤 音声入力中… in the preedit text. After st
 
 ### Debugging
 
-Check the IBus engine log:
+Check the IBus engine log (from ibus-engine-voiceinput):
 
 ```bash
 tail -f ~/.local/state/ibus-voiceinput/daemon.log
 ```
 
-Check the voice input daemon status and logs:
+Check the voice input daemon (ibus-voiceinputd) status and logs:
 
 ```bash
 systemctl --user status ibus-voiceinputd.service
