@@ -1,6 +1,6 @@
 [Unit]
 Description=IBus Voice Input Daemon (Whisper)
-Documentation=https://github.com/yuge42/ibus-sample
+Documentation=https://github.com/yuge42/ibus-voiceinput
 After=sound.target
 
 [Service]
