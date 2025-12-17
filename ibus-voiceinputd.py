@@ -17,7 +17,7 @@ SOCK_PATH = os.path.join(
     os.environ.get("XDG_RUNTIME_DIR", "/tmp"),
     "ibus-voiceinput.sock",
 )
-MODEL_NAME = "medium" # base / small / medium / large / large-v2 / v3
+MODEL_NAME = "base" # base / small / medium / large / large-v2 / v3
 
 SAMPLE_RATE = 16000
 CHANNELS = 1
@@ -246,7 +246,7 @@ def main():
         os.remove(SOCK_PATH)
 
     print("loading whisper model...")
-    model = whisper.load_model(MODEL_NAME)
+    model = whisper.load_model(MODEL_NAME, device="cpu")
 
     server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     server.bind(SOCK_PATH)
